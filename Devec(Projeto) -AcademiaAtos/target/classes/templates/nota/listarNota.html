@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"></html>
+<head>
+  <meta charset="UTF-8">
+  <title>Listar Notas</title>
+  <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+  <link href= "/css/listar.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+    <span class="fs-4">DeveC Cursos</span>
+  </a>
+
+  <ul class="nav nav-pills">
+    <li class="nav-item"><a href="/user/" class="nav-link active" aria-current="page">Início</a></li>
+  </ul>
+</header>
+<h1>Boletim</h1>
+
+<div class="row mb-3 text-center">
+  <div class="col-xl-2 themed-grid-col">ID</div>
+  <div class="col-xl-2 themed-grid-col">Aluno</div>
+  <div class="col-xl-2 themed-grid-col">Nota</div>
+  <div class="col-xl-2 themed-grid-col">Disciplina</div>
+</div>
+
+<div class="row mb-3 text-center" th:each="nota: ${listarNota}">
+  <div class="col-2 themed-grid-col" th:text="${nota.id}"></div>
+  <div class="col-2 themed-grid-col"  th:text="${nota.aluno}"></div>
+  <div class="col-2 themed-grid-col"  th:text="${nota.nota}"></div>
+  <div class="col-2 themed-grid-col"  th:text="${nota.disciplina}"></div>
+  <div class="col-1 themed-grid-col"> <a class="btn btn-warning rounded-pill px-3" th:href="@{alterarNota/{id}(id=${nota.id})}">Editar</a></div>
+  <div class="col-1 themed-grid-col"> <a class="btn btn-danger rounded-pill px-3" th:href="@{excluirNota/{id}(id=${nota.id})}">Excluir</a></div>
+</div>
+<footer class="footer mt-auto">
+  <div class="footer-content">
+    Desenvolvido por Gabriel Freitas | Atos-UFN 2023
+  </div>
+</footer>
+</body>
+
+</html>
